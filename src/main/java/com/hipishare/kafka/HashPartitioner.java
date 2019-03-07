@@ -5,15 +5,14 @@ import kafka.utils.VerifiableProperties;
 
 public class HashPartitioner implements Partitioner {
 
-  public HashPartitioner(VerifiableProperties verifiableProperties) {}
+	public HashPartitioner(VerifiableProperties verifiableProperties) {
+	}
 
-  @Override
-  public int partition(Object key, int numPartitions) {
-    if ((key instanceof Integer)) {
-      return Math.abs(Integer.parseInt(key.toString())) % numPartitions;
-    }
-    return Math.abs(key.hashCode() % numPartitions);
-  }
+	@Override
+	public int partition(Object key, int numPartitions) {
+		if ((key instanceof Integer)) {
+			return Math.abs(Integer.parseInt(key.toString())) % numPartitions;
+		}
+		return Math.abs(key.hashCode() % numPartitions);
+	}
 }
-
-
